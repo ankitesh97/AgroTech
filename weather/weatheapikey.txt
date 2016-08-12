@@ -1,0 +1,8 @@
+7c04a3b79de8d85866aaa33ff5b98033
+
+mumbai  = 1275339
+pune = 1259229
+delhi = 1273294
+thane = 5557906
+
+api call = 'api.openweathermap.org/data/2.5/forecast/city?id=1275339&APPID=7c04a3b79de8d85866aaa33ff5b98033'
