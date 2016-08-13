@@ -8,6 +8,8 @@
 
 from PyQt4 import QtCore, QtGui
 import sys
+import weatherfunc
+
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -23,7 +25,7 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_main(QtGui.QWidget):
+class Ui_main(weatherfunc.MyApp, QtGui.QWidget):
 
     def __init__(self):
         QtGui.QWidget.__init__(self)
@@ -183,6 +185,7 @@ class Ui_main(QtGui.QWidget):
         self.comboBox.addItem(_fromUtf8(""))
         self.comboBox.addItem(_fromUtf8(""))
         self.comboBox.addItem(_fromUtf8(""))
+        self.comboBox.addItem(_fromUtf8(""))
         self.verticalLayout_3.addWidget(self.comboBox)
         spacerItem = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.verticalLayout_3.addItem(spacerItem)
@@ -281,7 +284,7 @@ class Ui_main(QtGui.QWidget):
         self.humidity.setObjectName(_fromUtf8("humidity"))
         self.graph_display.addTab(self.humidity, _fromUtf8(""))
         self.verticalLayout_3.addWidget(self.graph_display)
-
+        self.comboBox.currentIndexChanged.connect(self.get_curr_city_data)    #connecting function of combobox
         self.retranslateUi(main)
         self.graph_display.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(main)
@@ -289,13 +292,16 @@ class Ui_main(QtGui.QWidget):
     def retranslateUi(self, main):
         main.setWindowTitle(_translate("main", "Weather", None))
         self.label.setText(_translate("main", "Please Select a city", None))
-        self.comboBox.setItemText(0, _translate("main", "Mumbai", None))
-        self.comboBox.setItemText(1, _translate("main", "Thane", None))
-        self.comboBox.setItemText(2, _translate("main", "Pune", None))
-        self.comboBox.setItemText(3, _translate("main", "Delhi", None))
+        self.comboBox.setItemText(0, _translate("main", "", None))
+        self.comboBox.setItemText(1, _translate("main", "Mumbai", None))
+        self.comboBox.setItemText(2, _translate("main", "Thane", None))
+        self.comboBox.setItemText(3, _translate("main", "Pune", None))
+        self.comboBox.setItemText(4, _translate("main", "Delhi", None))
         self.graph_display.setTabText(self.graph_display.indexOf(self.temperature), _translate("main", "Temperature", None))
         self.graph_display.setTabText(self.graph_display.indexOf(self.wind), _translate("main", "Wind", None))
         self.graph_display.setTabText(self.graph_display.indexOf(self.humidity), _translate("main", "Humidity", None))
+
+
 
 if __name__ == '__main__':
     app= QtGui.QApplication(sys.argv)
