@@ -25,6 +25,22 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
+def clickable(widget):
+
+    class Filter(QObject):
+        clicked = pyqtSignal()
+
+        def eventFilter(self, obj, event):
+            if obj == widget:
+                if event.type() == QEvent.MouseButtonRelease:
+                    if obj.rect().contains(event.pos()):
+                        self.clicked.emit()
+                        return True
+            return False
+    filter = Filter(widget)
+    widget.installEventFilter(filter)
+    return filter.clicked
+
 class Ui_main(weatherfunc.MyApp, QtGui.QWidget):
 
     def __init__(self):
@@ -208,7 +224,9 @@ class Ui_main(weatherfunc.MyApp, QtGui.QWidget):
         self.horizontalLayout_6 = QtGui.QHBoxLayout(self.weathe_display_frame)
         self.horizontalLayout_6.setObjectName(_fromUtf8("horizontalLayout_6"))
         self.current = QtGui.QLabel(self.weathe_display_frame)
-        self.current.setText(_fromUtf8(""))
+        self.current.setText(_fromUtf8("Saturday"))
+        # self.current.setPixmap(QtGui.QPixmap(_fromUtf8('rain.png')))
+        # self.label.setScaledContents(True)
         self.current.setObjectName(_fromUtf8("current"))
         self.horizontalLayout_6.addWidget(self.current)
         self.line = QtGui.QFrame(self.weathe_display_frame)
