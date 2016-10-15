@@ -7,4 +7,4 @@ coeff of k=2/9
 
 score = (1/9(%n)+(1/9*(%p))+(2/9*(%k))+(8/3*(%water)))/4
 
-for good soil 37<= score <=58
+for good soil 5<= score <=20
