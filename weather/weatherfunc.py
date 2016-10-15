@@ -6,7 +6,7 @@ from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_qt4agg import NavigationToolbar2QT as NavigationToolbar
 import pyqtgraph as pg
-
+#1263967
 maps = {"Mumbai":"1275339", "Thane":"5557906", "Pune":"1259229", "Delhi":"1273294","Boulder":"5819347"}
 class MyApp():
     _hand = []
