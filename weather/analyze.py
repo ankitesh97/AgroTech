@@ -2,6 +2,8 @@
 import json
 from datetime import datetime
 import pprint
+from firebase import firebase
+from push import pushdata
 day = {"0":"Monday", "1":"Tuesday","2":"Wednesday","3":"Thursday","4":"Friday","5":"Saturday","6":"Sunday"}
 
 def degrees_to_c(d):
@@ -49,6 +51,7 @@ def analyze_data(city):
             count += 1
             search_for_day += 1
     pprint.pprint(answer)
+    pushdata(answer)
     data_f.close()
     return answer
 
