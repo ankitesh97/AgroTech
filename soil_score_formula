@@ -1,0 +1,10 @@
+four elements are taken into consideration n,p,k and water content
+
+coeff of water content = 8/3
+coeff of n=1/9
+coeff of p = 1/9
+coeff of k=2/9
+
+score = (1/9(%n)+(1/9*(%p))+(2/9*(%k))+(8/3*(%water)))/4
+
+for good soil 5<= score <=20

@@ -2,7 +2,7 @@ prefer linux for project development
 
 requirements for gui designing:
 pyqt4
-cmd: sudo apt-get install python-pyqt4
+cmd: sudo apt-get install python-qt4
 
 qtdesigner
 cmd: sudo apt-get install qt4-designer
