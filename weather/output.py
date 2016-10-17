@@ -7,6 +7,10 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+import sys
+# from PyQt4.QtCore import Qt, SIGNAL
+# from PyQt4.QtGui import *
+
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -22,30 +26,92 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-class Ui_MainWindow(object):
+def clickable(widget):
+
+    class Filter(QObject):
+        clicked = pyqtSignal()
+
+        def eventFilter(self, obj, event):
+            if obj == widget:
+                if event.type() == QEvent.MouseButtonRelease:
+                    if obj.rect().contains(event.pos()):
+                        self.clicked.emit()
+                        return True
+            return False
+    filter = Filter(widget)
+    widget.installEventFilter(filter)
+    return filter.clicked
+
+
+class Ui_MainWindow(QtGui.QMainWindow,QtGui.QWidget, object):
+
+    def __init__(self):
+        QtGui.QWidget.__init__(self)
+        self.setupUi(self)
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(800, 600)
+        MainWindow.resize(736, 553)
+        MainWindow.setStyleSheet(_fromUtf8("background-image: url(backpic2.jpg);"))
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
-        self.textBrowser = QtGui.QTextBrowser(self.centralwidget)
-        self.textBrowser.setGeometry(QtCore.QRect(200, 30, 281, 31))
-        self.textBrowser.setObjectName(_fromUtf8("textBrowser"))
-        self.pushButton = QtGui.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(520, 170, 151, 27))
+        self.label = QtGui.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(270, 180, 191, 31))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Georgia"))
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setTextFormat(QtCore.Qt.RichText)
+        self.label.setAlignment(QtCore.Qt.AlignCenter)
+        self.label.setObjectName(_fromUtf8("label"))
+        self.layoutWidget = QtGui.QWidget(self.centralwidget)
+        self.layoutWidget.setGeometry(QtCore.QRect(0, 430, 731, 31))
+        self.layoutWidget.setObjectName(_fromUtf8("layoutWidget"))
+        self.horizontalLayout = QtGui.QHBoxLayout(self.layoutWidget)
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.pushButton = QtGui.QPushButton(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Georgia"))
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton.setFont(font)
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
-        self.pushButton_2 = QtGui.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(520, 260, 151, 27))
+        self.horizontalLayout.addWidget(self.pushButton)
+        self.pushButton_2 = QtGui.QPushButton(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Georgia"))
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_2.setFont(font)
         self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
-        self.pushButton_3 = QtGui.QPushButton(self.centralwidget)
-        self.pushButton_3.setGeometry(QtCore.QRect(520, 360, 151, 27))
+        self.horizontalLayout.addWidget(self.pushButton_2)
+        self.pushButton_3 = QtGui.QPushButton(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Georgia"))
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_3.setFont(font)
         self.pushButton_3.setObjectName(_fromUtf8("pushButton_3"))
-        self.pushButton_4 = QtGui.QPushButton(self.centralwidget)
-        self.pushButton_4.setGeometry(QtCore.QRect(520, 450, 151, 27))
+        self.horizontalLayout.addWidget(self.pushButton_3)
+        self.pushButton_4 = QtGui.QPushButton(self.layoutWidget)
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Georgia"))
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_4.setFont(font)
         self.pushButton_4.setObjectName(_fromUtf8("pushButton_4"))
+        self.horizontalLayout.addWidget(self.pushButton_4)
+        self.layoutWidget.raise_()
+        self.label.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 25))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 736, 23))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
@@ -57,13 +123,14 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
-        self.textBrowser.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Ubuntu\'; font-size:11pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600;\">AGRI ASSIST</span></p></body></html>", None))
+        self.label.setText(_translate("MainWindow", "AGRO TECH", None))
         self.pushButton.setText(_translate("MainWindow", "Weather", None))
         self.pushButton_2.setText(_translate("MainWindow", "Crop Suggestion", None))
         self.pushButton_3.setText(_translate("MainWindow", "Irrigation", None))
         self.pushButton_4.setText(_translate("MainWindow", "Fertilizer Efficiency", None))
 
+if __name__ == '__main__':
+    app= QtGui.QApplication(sys.argv)
+    ex = Ui_MainWindow()
+    ex.show()
+    sys.exit(app.exec_())

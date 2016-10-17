@@ -25,7 +25,7 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-def clickable(widget):
+    def clickable(widget):
 
     class Filter(QObject):
         clicked = pyqtSignal()
