@@ -1,4 +1,5 @@
 
+from sklearn import svm
 from firebase import firebase
 import numpy as np
 
@@ -15,10 +16,6 @@ for i in range(1,len(result)):
 	temp = result[i]['crop_class']
 	y = np.vstack((y,temp))
 
-print(X)    
-print(y)
-lambda = 0.1
-
-def onevsall(X,y,num_label,lambda):
-
-	m,n = X.shape   #dimension of the data set
+clf = svm.SVC(gamma=0.001, C=100)
+clf.fit(X,y)
+print clf.predict([20,20,18,15])
