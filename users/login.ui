@@ -16,7 +16,7 @@
   <property name="autoFillBackground">
    <bool>true</bool>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="login">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -29,7 +29,7 @@
     <string>Login</string>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit">
+  <widget class="QPlainTextEdit" name="unametextbox">
    <property name="geometry">
     <rect>
      <x>140</x>
@@ -39,7 +39,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPlainTextEdit" name="plainTextEdit_2">
+  <widget class="QPlainTextEdit" name="passtextbox">
    <property name="geometry">
     <rect>
      <x>140</x>
@@ -49,7 +49,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="usernamelabel">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -73,7 +73,7 @@
     <enum>Qt::RichText</enum>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="passwordlabel">
    <property name="geometry">
     <rect>
      <x>30</x>
