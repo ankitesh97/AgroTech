@@ -9,6 +9,7 @@
 from PyQt4 import QtCore, QtGui
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
+#import matplotlib.backends.backend_qt4agg
 import sys
 import weatherfunc
 import pyqtgraph as pg
