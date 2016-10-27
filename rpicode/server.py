@@ -1,25 +1,20 @@
-from flask import FlaskW, request,jsonify
+from flask import Flask, request,jsonify
 import RPi.GPIO as GPIO
  
 import json
 # import firebase
 app = Flask(__name__)
-GPIO.setmode(GPIO.BOARD) 
-GPIO.setup(7, GPIO.OUT) 
-GPIO.output(7,True) 
 # db = firebase.FirebaseApplication('https://homeautomation-890be.firebaseio.com/',None) 
 
 
 GPIO.setmode(GPIO.BOARD) 
 GPIO.setup(13, GPIO.OUT) 
-GPIO.output(13,True)
-
 
 def ledon():
-	ledpin.write(1)
+	GPIO.output(13,True)
 
 def ledoff():
-	ledpin.write(0)
+	GPIO.output(13,False)
 
 def firebasepush(data):
 	print data
@@ -55,15 +50,14 @@ def ledmanipulate():
 	data = request.data
 	data = json.loads(data)
 	print data
-	data = data['payload']
 
 	if data['mode'] == 1:
 		print "led turned on"
-		# ledon()
+		ledon()
 		# firebasepush(data)
 	else:
 		print "led turned off"
-		# ledoff()
+		ledoff()
 		# firebasepush(data)
 	return jsonify({
 		'message':'success'
