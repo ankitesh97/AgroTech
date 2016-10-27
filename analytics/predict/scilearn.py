@@ -20,7 +20,7 @@ for i in range(1,len(result)):
 
 clf = svm.SVC(gamma=0.001, C=100)
 clf.fit(X,y)
-prediction =  clf.predict([20,20,18,15])
+prediction =  clf.predict([10,20,14,11])
 
 hand = filter(lambda x: x['id'] == prediction[0],crops_list).pop()
 
